@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flackle</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<div id="auth" class="auth"><div class="auth-card">
+  <div class="brand"><div class="logo">F</div><div><b>Flackle</b><span>Your place to hang out.</span></div></div>
+  <div class="tabs"><button class="tab active" data-mode="login">Log In</button><button class="tab" data-mode="register">Register</button></div>
+  <form id="authForm"><label>USERNAME</label><input id="username" required maxlength="24" autocomplete="username">
+  <label>PASSWORD</label><input id="password" type="password" required autocomplete="current-password">
+  <button class="primary">Continue</button></form><p id="authError" class="error"></p>
+</div></div>
+
+<div id="app" class="app hidden">
+ <aside class="rail">
+   <button class="home-btn active" id="homeBtn">F</button><div class="rail-sep"></div><div id="serverRail"></div>
+   <button class="add-server" id="addServer">+</button>
+ </aside>
+ <aside class="sidebar">
+   <div class="sidebar-top"><button id="quickSearch">Find or start a conversation</button></div>
+   <div id="homeNav" class="home-nav">
+     <div class="nav-item active" id="friendsBtn"><span>♙</span> Friends</div>
+     <div class="nav-item" id="discover"><span>◎</span> Discover</div>
+   </div>
+   <div id="serverNav" class="hidden">
+     <div class="server-name-row"><b id="serverName">Server</b><button id="serverMenu">⌄</button></div>
+     <div class="category"><span>TEXT CHANNELS</span><button id="addChannel">+</button></div>
+     <div id="channels"></div>
+     <div class="category"><span>VOICE CHANNELS</span><button>+</button></div>
+     <div class="channel voice"><span>🔊</span> Lounge</div>
+   </div>
+   <div class="user-panel"><div class="avatar" id="meAvatar">?</div><div class="user-info"><b id="meName">User</b><small><i></i> online</small></div><button id="settings">⚙</button><button id="logout">↪</button></div>
+ </aside>
+
+ <main class="main">
+  <header class="topbar"><div class="top-title"><span id="topIcon">♙</span><b id="topTitle">Friends</b><span id="typing"></span></div>
+   <div class="top-actions"><button id="topAddFriend">Add Friend</button><button id="topSearch">⌕</button><button>ⓘ</button></div>
+  </header>
+  <section id="homeView" class="view home-view">
+    <div class="home-content"><div class="home-tabs"><button class="home-tab active" data-home="online">Online</button><button class="home-tab" data-home="all">All</button><button class="home-tab" data-home="pending">Pending</button><button class="add-friend-tab" id="addFriend">Add Friend</button></div>
+    <div class="home-heading">Friends</div><div id="friendsList"></div></div>
+  </section>
+  <section id="chatView" class="view chat-view hidden">
+    <div id="messages" class="messages"></div>
+    <form id="composer" class="composer"><button type="button" id="attach">+</button><input id="messageInput" placeholder="Message #general" autocomplete="off"><button type="button" id="emoji">☺</button><button class="send">➤</button></form>
+  </section>
+  <aside id="memberPanel" class="member-panel hidden"><div class="members-title">MEMBERS</div><div id="members"></div></aside>
+ </main>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-card"><button class="close">×</button><h2 id="modalTitle"></h2><div id="modalBody"></div></div></div>
+<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>
