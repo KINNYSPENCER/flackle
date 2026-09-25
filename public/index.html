@@ -1,35 +1,35 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Flackle</title><link rel="stylesheet" href="/style.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flackle</title><link rel="stylesheet" href="/style.css"></head>
 <body>
 <div id="auth" class="auth"><div class="auth-card">
-  <div class="brand"><div class="logo">F</div><div><b>Flackle</b><span>Your place to hang out.</span></div></div>
-  <div class="tabs"><button class="tab active" data-mode="login">Log In</button><button class="tab" data-mode="register">Register</button></div>
-  <form id="authForm"><label>USERNAME</label><input id="username" required maxlength="24" autocomplete="username"><label>PASSWORD</label><input id="password" type="password" required autocomplete="current-password"><button class="primary">Continue</button></form><p id="authError" class="error"></p>
+  <div class="brand"><div class="logo" aria-hidden="true">F</div><div><b>Flackle</b><span>Your place to hang out.</span></div></div>
+  <div class="tabs" role="tablist"><button class="tab active" data-mode="login" role="tab" aria-selected="true">Log In</button><button class="tab" data-mode="register" role="tab" aria-selected="false">Register</button></div>
+  <form id="authForm"><label for="username">USERNAME</label><input id="username" required maxlength="24" autocomplete="username"><label for="password">PASSWORD</label><input id="password" type="password" required autocomplete="current-password"><button class="primary">Continue</button></form><p id="authError" class="error" role="alert"></p>
 </div></div>
 <div id="app" class="app hidden">
- <aside class="rail"><button class="home-btn active" id="homeBtn">F</button><div class="rail-sep"></div><div id="serverRail"></div><button class="add-server" id="addServer">+</button></aside>
- <aside class="sidebar">
-  <div class="sidebar-top"><button id="quickSearch">Find or start a conversation</button></div>
-  <div id="homeNav" class="home-nav">
-   <div class="nav-item active" id="friendsBtn"><span>♙</span> Friends</div>
-   <div class="nav-item" id="recentBtn"><span>◷</span> Recent Messages</div>
-   <div class="nav-item" id="notificationsBtn"><span>♢</span> Notifications <b id="notificationBadge" class="badge hidden">0</b></div>
-   <div class="nav-item" id="discover"><span>◎</span> Discover</div>
-   <div class="nav-item hidden" id="staffBtn"><span>◇</span> Staff Center</div>
-  </div>
-  <div id="serverNav" class="hidden"><div class="server-name-row"><b id="serverName">Server</b><button id="serverMenu" title="Server settings">⚙</button></div><div class="category"><span>TEXT CHANNELS</span><button id="addChannel">+</button></div><div id="channels"></div><div class="category"><span>VOICE CHANNELS</span><button>+</button></div><div class="channel voice"><span>◉</span> Lounge</div></div>
-  <div class="user-panel"><button class="avatar" id="meAvatar">?</button><div class="user-info"><b id="meName">User</b><small><i></i> online</small></div><button id="settings" title="User settings">⚙</button><button id="logout" title="Log out">↪</button></div>
+ <aside class="rail" aria-label="Servers"><button class="home-btn active" id="homeBtn" aria-label="Home">F</button><div class="rail-sep"></div><div id="serverRail"></div><button class="add-server" id="addServer" aria-label="Add server">+</button></aside>
+ <div id="sidebarBackdrop" class="sidebar-backdrop hidden"></div>
+ <aside class="sidebar" id="sidebar" aria-label="Navigation">
+  <div class="sidebar-top"><button id="quickSearch">Find a person</button></div>
+  <nav id="homeNav" class="home-nav">
+   <button class="nav-item active" id="friendsBtn"><span aria-hidden="true">F</span> Friends</button>
+   <button class="nav-item" id="recentBtn"><span aria-hidden="true">R</span> Recent Messages</button>
+   <button class="nav-item" id="notificationsBtn"><span aria-hidden="true">N</span> Notifications <b id="notificationBadge" class="badge hidden">0</b></button>
+   <button class="nav-item" id="discover"><span aria-hidden="true">D</span> Discover</button>
+   <button class="nav-item hidden" id="staffBtn"><span aria-hidden="true">S</span> Staff Center</button>
+  </nav>
+  <div id="serverNav" class="hidden"><div class="server-name-row"><b id="serverName">Server</b><button id="serverMenu" aria-label="Server settings">Settings</button></div><div class="category"><span>TEXT CHANNELS</span><button id="addChannel" aria-label="Add channel">+</button></div><div id="channels"></div></div>
+  <div class="user-panel"><button class="avatar" id="meAvatar" aria-label="View your profile">?</button><div class="user-info"><b id="meName">User</b><small><i></i> online</small></div><button id="settings" aria-label="User settings">Settings</button><button id="logout" aria-label="Log out">Exit</button></div>
  </aside>
  <main class="main">
-  <header class="topbar"><div class="top-title"><span id="topIcon">♙</span><b id="topTitle">Friends</b><span id="typing"></span></div><div class="top-actions"><button id="topAddFriend">Add Friend</button><button id="topNotifications" title="Notifications">♢<span id="topBadge" class="dot hidden"></span></button><button id="topSearch">⌕</button></div></header>
-  <section id="homeView" class="view home-view"><div class="home-content"><div class="home-tabs"><button class="home-tab active" data-home="online">Online</button><button class="home-tab" data-home="all">All</button><button class="add-friend-tab" id="addFriend">Add Friend</button></div><div class="home-heading">Friends</div><div id="friendsList"></div></div></section>
+  <header class="topbar"><div class="top-title"><button id="mobileMenu" class="mobile-menu" aria-label="Open navigation" aria-expanded="false">Menu</button><span id="topIcon" aria-hidden="true">F</span><b id="topTitle">Friends</b><span id="typing" aria-live="polite"></span></div><div class="top-actions"><button id="topAddFriend">Add Friend</button><button id="topNotifications" aria-label="Notifications">Notifications<span id="topBadge" class="dot hidden"></span></button><button id="topSearch">Search</button></div></header>
+  <section id="homeView" class="view home-view"><div class="home-content"><div class="home-tabs"><button class="home-tab active">Online</button><button class="home-tab">All</button><button class="add-friend-tab" id="addFriend">Add Friend</button></div><div class="home-heading">Friends</div><div id="friendsList"></div></div></section>
   <section id="panelView" class="view panel-view hidden"><div class="panel-content"><div id="panelHeader"></div><div id="panelList"></div></div></section>
-  <section id="chatView" class="view chat-view hidden"><div id="messages" class="messages"></div><form id="composer" class="composer"><button type="button" id="attach">+</button><input id="messageInput" placeholder="Message #general" autocomplete="off"><button type="button" id="emoji">☺</button><button class="send">➤</button></form></section>
+  <section id="chatView" class="view chat-view hidden"><div id="messages" class="messages" aria-live="polite"></div><form id="composer" class="composer"><label class="sr-only" for="messageInput">Message</label><input id="messageInput" placeholder="Message #general" autocomplete="off"><button class="send" aria-label="Send message">Send</button></form></section>
   <aside id="memberPanel" class="member-panel hidden"><div class="members-title">MEMBERS</div><div id="members"></div></aside>
  </main>
 </div>
-<div id="toast" class="toast hidden"></div>
-<div id="modal" class="modal hidden"><div class="modal-card"><button class="close">×</button><h2 id="modalTitle"></h2><div id="modalBody"></div></div></div>
-<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><button class="close" aria-label="Close dialog">×</button><h2 id="modalTitle"></h2><div id="modalBody"></div></div></div>
+<script src="/socket.io/socket.io.js"></script><script type="module" src="/app.js"></script>
 </body></html>
